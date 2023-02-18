@@ -12,5 +12,63 @@ datasource db {
 
 model User {
   id   String @id @default(cuid())
+  username String
+  email String
+  password String
+  bio String
+  contact String
+  profilePicture String
+  role TeamRoles
+}
+
+model TeamMember {
+  id   String @id @default(cuid())
+  nickName String
+  user User @relations(fields: [userID], references:[id] )
+  userID String
+  role Role
+}
+
+model Team {
+  id   String @id @default(cuid())
   name String
 }
+
+model Event {
+  id   String @id @default(cuid())
+  organizer Team @relations(fields: [teamID], references:[id] )
+  teamID String
+  description String
+  picture String
+  public boolean
+}
+
+
+model Match {
+  id String @id @default(cuid())
+  event Event
+}
+
+model MatchParticipant{
+  match Match @relations(fields: [matchID], references:[id] )
+  matchID String
+  team Team @relations(fields: [teamID], references:[id] )
+  teamID String
+  winer String
+  acceped boolean
+  isChallenger boolean
+}
+
+enum UserRoles {
+  ADMIN
+  MODERATOR
+  REFEREE
+  USER
+}
+
+
+enum TeamRoles {
+  CAPITAIN
+  MEMBER
+}
+
