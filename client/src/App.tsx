@@ -1,12 +1,12 @@
-import "./App.css";
 import { Route } from "wouter";
+import { Layout } from "./layout";
 import { IndexPage } from "./pages";
 
 function App() {
 	return (
-		<div>
+		<Layout>
 			<Route path="/" component={IndexPage} />
-		</div>
+		</Layout>
 	);
 }
 
