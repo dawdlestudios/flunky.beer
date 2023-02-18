@@ -11,64 +11,57 @@ datasource db {
 }
 
 model User {
-  id   String @id @default(cuid())
-  username String
-  email String
-  password String
-  bio String
-  contact String
+  id             String       @id @default(cuid())
+  username       String       @unique
+  email          String       @unique
+  displayName    String
+  password       String
+  bio            String
+  contact        String
   profilePicture String
-  role TeamRoles
+  role           String
+  TeamMember     TeamMember[]
 }
 
 model TeamMember {
-  id   String @id @default(cuid())
+  id       String @id @default(cuid())
   nickName String
-  user User @relations(fields: [userID], references:[id] )
-  userID String
-  role Role
+  user     User   @relation(fields: [userID], references: [id])
+  userID   String
+  role     String
 }
 
 model Team {
-  id   String @id @default(cuid())
-  name String
+  id               String             @id @default(cuid())
+  name             String
+  Event            Event[]
+  MatchParticipant MatchParticipant[]
 }
 
 model Event {
-  id   String @id @default(cuid())
-  organizer Team @relations(fields: [teamID], references:[id] )
-  teamID String
+  id          String  @id @default(cuid())
+  organizer   Team    @relation(fields: [teamID], references: [id])
+  teamID      String
   description String
-  picture String
-  public boolean
+  picture     String
+  public      Boolean
+  Match       Match[]
 }
-
 
 model Match {
-  id String @id @default(cuid())
-  event Event
+  id               String             @id @default(cuid())
+  event            Event              @relation(fields: [eventId], references: [id])
+  eventId          String
+  MatchParticipant MatchParticipant[]
 }
 
-model MatchParticipant{
-  match Match @relations(fields: [matchID], references:[id] )
-  matchID String
-  team Team @relations(fields: [teamID], references:[id] )
-  teamID String
-  winer String
-  acceped boolean
-  isChallenger boolean
+model MatchParticipant {
+  id           String  @id @default(cuid())
+  match        Match   @relation(fields: [matchID], references: [id])
+  matchID      String
+  team         Team    @relation(fields: [teamID], references: [id])
+  teamID       String
+  winer        String
+  acceped      Boolean
+  isChallenger Boolean
 }
-
-enum UserRoles {
-  ADMIN
-  MODERATOR
-  REFEREE
-  USER
-}
-
-
-enum TeamRoles {
-  CAPITAIN
-  MEMBER
-}
-
