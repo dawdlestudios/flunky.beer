@@ -1,4 +1,4 @@
-import { Box, Container, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, SimpleGrid, Text } from "@chakra-ui/react";
 import { RouteComponentProps } from "wouter";
 import ProfileCard from "./card";
 
@@ -16,9 +16,20 @@ export const UserPage = ({
 				}}
 				spacing={10}
 			>
-				<ProfileCard />
-				<Box>
-					<h1>asdf</h1>
+				<ProfileCard
+					displayName="test useer"
+					username="test_user"
+					teams={[
+						{
+							name: "test team",
+							id: "test_team",
+						},
+					]}
+				/>
+				<Box paddingTop={"1rem"} paddingLeft="1rem">
+					<Text fontWeight={"medium"} fontSize="2xl">
+						Verlauf
+					</Text>
 				</Box>
 			</SimpleGrid>
 		</Container>

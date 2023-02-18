@@ -6,22 +6,24 @@ import {
 	Text,
 	Stack,
 	Button,
-	Link,
+	Link as ChakraLink,
 	Badge,
 	useColorModeValue,
 } from "@chakra-ui/react";
+import { Link } from "wouter";
 
 export type ProfileCardProps = {
 	username: string;
 	displayName: string;
 	avatar?: string;
+	bio?: string;
 	teams: {
 		id: string;
 		name: string;
 	}[];
 };
 
-export default function ProfileCard({ username, displayName, avatar, teams }: ProfileCardProps) {
+export default function ProfileCard({ username, displayName, avatar, teams, bio }: ProfileCardProps) {
 	return (
 		<Center py={6}>
 			<Box
@@ -32,6 +34,7 @@ export default function ProfileCard({ username, displayName, avatar, teams }: Pr
 				rounded={"lg"}
 				p={6}
 				textAlign={"center"}
+				minW={"18rem"}
 			>
 				<Avatar
 					size={"xl"}
@@ -52,42 +55,26 @@ export default function ProfileCard({ username, displayName, avatar, teams }: Pr
 					}}
 				/>
 				<Heading fontSize={"2xl"} fontFamily={"body"}>
-					Lindsey James
+					{displayName}
 				</Heading>
 				<Text fontWeight={600} color={"gray.500"} mb={4}>
-					@lindsey_jam3s
+					@{username}
 				</Text>
 				<Text textAlign={"center"} color={useColorModeValue("gray.700", "gray.400")} px={3}>
-					Actress, musician, songwriter and artist. PM for work inquires or{" "}
-					<Link href={"#"} color={"blue.400"}>
-						#tag
-					</Link>{" "}
-					me in your posts
+					{bio}
 				</Text>
 
 				<Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
-					<Badge px={2} py={1} bg={useColorModeValue("gray.50", "gray.800")} fontWeight={"400"}>
-						#art
-					</Badge>
-					<Badge px={2} py={1} bg={useColorModeValue("gray.50", "gray.800")} fontWeight={"400"}>
-						#photography
-					</Badge>
-					<Badge px={2} py={1} bg={useColorModeValue("gray.50", "gray.800")} fontWeight={"400"}>
-						#music
-					</Badge>
+					{teams.map((team) => (
+						<Link key={team.id} href={`/team/${team.id}`}>
+							<Badge px={2} py={1} bg={useColorModeValue("gray.50", "gray.800")} fontWeight={"400"}>
+								{team.name}
+							</Badge>
+						</Link>
+					))}
 				</Stack>
 
 				<Stack mt={8} direction={"row"} spacing={4}>
-					<Button
-						flex={1}
-						fontSize={"sm"}
-						rounded={"full"}
-						_focus={{
-							bg: "gray.200",
-						}}
-					>
-						Message
-					</Button>
 					<Button
 						flex={1}
 						fontSize={"sm"}
@@ -102,7 +89,7 @@ export default function ProfileCard({ username, displayName, avatar, teams }: Pr
 							bg: "blue.500",
 						}}
 					>
-						Follow
+						Herausfordern
 					</Button>
 				</Stack>
 			</Box>
