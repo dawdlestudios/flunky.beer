@@ -1,4 +1,4 @@
-import { router, publicProcedure } from "../server";
+import { router, publicProcedure } from "../trpc";
 import { z } from "zod";
 import { prisma } from "../prisma";
 import type { User } from "../prisma";
@@ -59,7 +59,7 @@ export const authRouter = router({
 
 			if (validPassword) {
 				const token = createJWT(user.id);
-				return { message: "success", username: user.username,token };
+				return { message: "success", username: user.username, token };
 			}
 			throw new TRPCError({ code: "UNAUTHORIZED", message: "" });
 		}),

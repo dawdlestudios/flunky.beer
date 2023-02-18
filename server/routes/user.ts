@@ -1,9 +1,10 @@
-import { router, publicProcedure, protectedProcedure } from "../server";
+import { router, publicProcedure } from "../trpc";
 import { z } from "zod";
 import { prisma, Team, TeamMember } from "../prisma";
 import type { User } from "../prisma";
 import { TRPCError } from "@trpc/server";
-import { publicTeamInfo, publicTeamMemberInfo, publicUserInfo } from "../types";
+import { publicTeamMemberInfo, publicUserInfo } from "../types";
+import { protectedProcedure } from "../middlewares/auth";
 
 export const userRouter = router({
 	getUser: publicProcedure
@@ -46,11 +47,11 @@ export const userRouter = router({
 					const teamInfo: publicTeamMemberInfo = {
 						id: tm.id,
 						nickName: tm.team.name,
-            role: tm.role,
-            team: {
-              id: tm.team.id,
-              name: tm.team.name
-            }
+						role: tm.role,
+						team: {
+							id: tm.team.id,
+							name: tm.team.name,
+						},
 					};
 					return teamInfo;
 				}),
@@ -58,85 +59,79 @@ export const userRouter = router({
 
 			return { message: "success", user: userInfo };
 		}),
-  getMe: protectedProcedure
-    .query(async ({ctx}) => {
-
-      const user = await prisma.user.findUnique({
-        where: {
-          id: ctx.user!.id
-        },
-        select: {
-          id: true,
-          username: true,
-          displayName: true,
-          bio: true,
-          contact: true,
-          profilePicture: true,
-          role: true,
-          TeamMember: {
-            select:{
-              id: true,
-              nickName: true,
-                role: true,
-                team: {
-                  select: {
-                    id: true,
-                    name: true,
-                  }
-                }
-              }
-          },
-          followers: {
-            select:{
-              id: true,
-              username: true,
-              displayName: true,
-              bio: true,
-              contact: true,
-              profilePicture: true,
-              TeamMember: {
-                select:{
-                  id: true,
-                  nickName: true,
-                  role: true,
-                  team: {
-                    select: {
-                      id: true,
-                      name: true,
-                    }
-                  }
-
-                }
-              }
-            }
-          },
-          follows: {
-            select:{
-              id: true,
-              username: true,
-              displayName: true,
-              bio: true,
-              profilePicture: true,
-              TeamMember: {
-                select:{
-                  id: true,
-                  nickName: true,
-                  role: true,
-                  team: {
-                    select: {
-                      id: true,
-                      name: true,
-                    }
-                  }
-
-                }
-              }
-            }
-          },
-        }
-      })
-      return{ message: "success", user }
-    })
+	getMe: protectedProcedure.query(async ({ ctx }) => {
+		const user = await prisma.user.findUnique({
+			where: {
+				id: ctx.user!.id,
+			},
+			select: {
+				id: true,
+				username: true,
+				displayName: true,
+				bio: true,
+				contact: true,
+				profilePicture: true,
+				role: true,
+				TeamMember: {
+					select: {
+						id: true,
+						nickName: true,
+						role: true,
+						team: {
+							select: {
+								id: true,
+								name: true,
+							},
+						},
+					},
+				},
+				followers: {
+					select: {
+						id: true,
+						username: true,
+						displayName: true,
+						bio: true,
+						contact: true,
+						profilePicture: true,
+						TeamMember: {
+							select: {
+								id: true,
+								nickName: true,
+								role: true,
+								team: {
+									select: {
+										id: true,
+										name: true,
+									},
+								},
+							},
+						},
+					},
+				},
+				follows: {
+					select: {
+						id: true,
+						username: true,
+						displayName: true,
+						bio: true,
+						profilePicture: true,
+						TeamMember: {
+							select: {
+								id: true,
+								nickName: true,
+								role: true,
+								team: {
+									select: {
+										id: true,
+										name: true,
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		});
+		return { message: "success", user };
+	}),
 });
-
-

@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { Context } from "../context";
-import { middleware, publicProcedure } from "../server";
+import { middleware, publicProcedure } from "../trpc";
 
 const isAuthed = middleware(({ ctx, next }) => {
 	// `ctx.user` is nullable
