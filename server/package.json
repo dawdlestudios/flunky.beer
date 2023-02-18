@@ -1,0 +1,21 @@
+{
+  "name": "@balls/server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsup server.ts --watch --onSuccess \"node dist/server.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@trpc/server": "^10.11.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node17": "^1.0.2",
+    "@types/node": "^18.14.0",
+    "tsup": "^6.6.3",
+    "typescript": "^4.9.3"
+  }
+}

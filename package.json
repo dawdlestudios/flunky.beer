@@ -1,0 +1,13 @@
+{
+  "name": "balls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "pnpm --filter @balls/client dev",
+    "server": "pnpm --filter @balls/server dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
