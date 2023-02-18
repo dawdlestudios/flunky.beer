@@ -4,28 +4,39 @@ import {
 	FormControl,
 	FormLabel,
 	Input,
-	Checkbox,
 	Stack,
-	Link,
 	Button,
 	Heading,
-	Text,
 	useColorModeValue,
+	Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { Link, useLocation } from "wouter";
 import { useStore } from "../../state";
 import { trpc } from "../../trpc";
 
 export default function LoginPage() {
 	const mutation = trpc.auth.signIn.useMutation();
 	const login = useStore((state) => state.login);
+	const [, setLocation] = useLocation();
 
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const handleLoginSuccess = (token: string, username: string) => {
+		login(token);
+		setLocation(`/user/${username}`);
+	};
 
-	const handleLogin = async () => {
-		const name = "John Doe";
-		await mutation.mutate({ email, password });
+	const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const form = new FormData(e.target as HTMLFormElement);
+		let email = form.get("email");
+		let password = form.get("password");
+
+		if (!(email && password) || typeof email !== "string" || typeof password !== "string")
+			throw new Error("Missing email or password");
+
+		await mutation.mutate(
+			{ email, password: password },
+			{ onSuccess: (data) => handleLoginSuccess(data.token, data.username) },
+		);
 	};
 
 	return (
@@ -35,31 +46,35 @@ export default function LoginPage() {
 					<Heading fontSize={"4xl"}>Melde dich an</Heading>
 				</Stack>
 				<Box rounded={"lg"} bg={useColorModeValue("white", "gray.700")} boxShadow={"lg"} p={8}>
-					<Stack spacing={4}>
-						<FormControl id="email">
-							<FormLabel>Email address</FormLabel>
-							<Input type="email" />
-						</FormControl>
-						<FormControl id="password">
-							<FormLabel>Password</FormLabel>
-							<Input type="password" />
-						</FormControl>
-						<Stack spacing={10}>
-							<Stack direction={{ base: "column", sm: "row" }} align={"start"} justify={"space-between"}>
-								<Checkbox>Remember me</Checkbox>
-								<Link color={"blue.400"}>Forgot password?</Link>
+					<form onSubmit={handleSubmitForm}>
+						<Stack spacing={4}>
+							<FormControl id="email">
+								<FormLabel>Email address</FormLabel>
+								<Input name="email" type="email" />
+							</FormControl>
+							<FormControl id="password">
+								<FormLabel>Password</FormLabel>
+								<Input name="password" type="password" />
+							</FormControl>
+							<Stack spacing={10}>
+								<Button
+									type="submit"
+									bg={"blue.400"}
+									color={"white"}
+									_hover={{
+										bg: "blue.500",
+									}}
+								>
+									Anmelden
+								</Button>
 							</Stack>
-							<Button
-								bg={"blue.400"}
-								color={"white"}
-								_hover={{
-									bg: "blue.500",
-								}}
-							>
-								Sign in
-							</Button>
+							<Stack pt={6}>
+								<Text align={"center"}>
+									Du hast noch keine Konto? <Link href="/signup">Registrieren</Link>
+								</Text>
+							</Stack>
 						</Stack>
-					</Stack>
+					</form>
 				</Box>
 			</Stack>
 		</Flex>
