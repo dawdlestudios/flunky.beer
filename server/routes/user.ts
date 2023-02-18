@@ -5,7 +5,7 @@ import type { User } from "../prisma";
 import { TRPCError } from "@trpc/server";
 
 export const userRouter = router({
-	signUp: publicProcedure
+	getUser: publicProcedure
 		.input(
 			z.object({
 				username: z.string(),
