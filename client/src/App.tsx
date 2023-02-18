@@ -7,7 +7,6 @@ const InboxPage = ({}: RouteComponentProps<DefaultParams>) => {
 };
 
 function App() {
-  const [count, setCount] = useState(0)
   return (
       <div>
         <Route path="/cock">
