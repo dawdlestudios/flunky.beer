@@ -1,6 +1,6 @@
 import { router, publicProcedure, protectedProcedure } from "../server";
 import { z } from "zod";
-import { prisma } from "../prisma";
+import { prisma, Team, TeamMember } from "../prisma";
 import type { User } from "../prisma";
 import { TRPCError } from "@trpc/server";
 
@@ -12,7 +12,11 @@ export const userRouter = router({
 			}),
 		)
 		.query(async ({ input }) => {
-			let user: User;
+			let user: User & {
+                TeamMember: (TeamMember & {
+                    team: Team;
+                })[];
+            };;
 			try {
 				user = await prisma.user.findUniqueOrThrow({
 					where: {
@@ -36,10 +40,17 @@ export const userRouter = router({
 				displayName: user.displayName,
 				bio: user.bio,
 				profilePicture: user.profilePicture,
-				teams: [],
+				teams: user.TeamMember.map((tm) => {
+          const teamInfo: publicTeamInfo = {
+            id: tm.team.id,
+            name: tm.team.name
+          }
+          return teamInfo
+          
+        }),
 			};
 
-			return { message: "success" };
+			return { message: "success", user: userInfo };
 		}),
 });
 
