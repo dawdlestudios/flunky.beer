@@ -22,7 +22,8 @@ export const authRouter = router({
       const user = await prisma.user.create({
         data: {
           email: input.email,
-          username: input.username,
+          username: input.username.toLowerCase(),
+          displayName: input.username,
           password: hashedPass,
           bio: "",
           contact: "",
