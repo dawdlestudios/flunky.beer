@@ -3,8 +3,11 @@ import { Context } from "./context";
 
 const t = initTRPC.context<Context>().create();
 
-const router = t.router;
-const publicProcedure = t.procedure;
+export const router = t.router;
+export const middleware = t.middleware;
+export const publicProcedure = t.procedure;
+
+export { protectedProcedure } from "./middlewares/auth";
 
 export const appRouter = router({});
 

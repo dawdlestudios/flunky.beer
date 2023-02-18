@@ -28,6 +28,8 @@ model TeamMember {
   nickName String
   user     User   @relation(fields: [userID], references: [id])
   userID   String
+  team     Team   @relation(fields: [teamID], references: [id])
+  teamID   String
   role     String
 }
 
@@ -36,6 +38,7 @@ model Team {
   name             String
   Event            Event[]
   MatchParticipant MatchParticipant[]
+  TeamMember       TeamMember[]
 }
 
 model Event {
