@@ -39,13 +39,17 @@ export const useUser = create<{
 }));
 
 export const useSyncUser = () => {
-	const authenticated = useStore((state) => state.authenticated);
+	const [authenticated, logout] = useStore((state) => [state.authenticated, state.logout]);
 	const setUser = useUser((state) => state.setUser);
 	const user = trpc.user.getMe.useQuery(undefined, {
 		enabled: authenticated,
 	});
 
 	useEffect(() => {
+		if (user?.error?.data?.httpStatus === 401) {
+			logout();
+		}
+
 		if (user.data) {
 			// todo
 			setUser(user);

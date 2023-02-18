@@ -1,9 +1,17 @@
-import { Stack } from "@chakra-ui/react";
+import { Container, SimpleGrid, Stack } from "@chakra-ui/react";
 
 export const LeaderboardPage = () => {
 	return (
-		<Stack minH={"calc(100vh - 4rem)"} direction={{ base: "column", md: "row" }}>
-			<h1>Leaderboard</h1>
-		</Stack>
+		<Container maxW={"5xl"} py={12} minH="calc(100vh - 8rem)" alignItems={"center"} display="flex">
+			<SimpleGrid
+				columns={{
+					sm: 1,
+					md: 2,
+				}}
+				spacing={10}
+			>
+				<h1>Leaderboard</h1>
+			</SimpleGrid>
+		</Container>
 	);
 };
