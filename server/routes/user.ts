@@ -3,6 +3,7 @@ import { z } from "zod";
 import { prisma, Team, TeamMember } from "../prisma";
 import type { User } from "../prisma";
 import { TRPCError } from "@trpc/server";
+import { publicTeamInfo, publicUserInfo } from "../types";
 
 export const userRouter = router({
 	getUser: publicProcedure
@@ -52,18 +53,10 @@ export const userRouter = router({
 
 			return { message: "success", user: userInfo };
 		}),
+  getMe: protectedProcedure
+    .query(async () => {
+
+    })
 });
 
-type publicUserInfo = {
-	id: string;
-	username: string;
-	displayName: string;
-	bio: string;
-	profilePicture: string;
-	teams: publicTeamInfo[];
-};
 
-type publicTeamInfo = {
-	id: string;
-	name: string;
-};

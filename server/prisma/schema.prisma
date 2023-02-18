@@ -21,6 +21,8 @@ model User {
   profilePicture String
   role           String
   TeamMember     TeamMember[]
+  follows        User[]       @relation("UserFollows")
+  followers      User[]       @relation("UserFollows")
 }
 
 model TeamMember {
@@ -36,6 +38,7 @@ model TeamMember {
 model Team {
   id               String             @id @default(cuid())
   name             String
+  contact          String
   Event            Event[]
   MatchParticipant MatchParticipant[]
   TeamMember       TeamMember[]
