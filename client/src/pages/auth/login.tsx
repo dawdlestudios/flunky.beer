@@ -12,8 +12,22 @@ import {
 	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
+import { useState } from "react";
+import { useStore } from "../../state";
+import { trpc } from "../../trpc";
 
 export default function LoginPage() {
+	const mutation = trpc.auth.signIn.useMutation();
+	const login = useStore((state) => state.login);
+
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	const handleLogin = async () => {
+		const name = "John Doe";
+		await mutation.mutate({ email, password });
+	};
+
 	return (
 		<Flex minH={"100vh"} align={"center"} justify={"center"} bg={useColorModeValue("gray.50", "gray.800")}>
 			<Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>

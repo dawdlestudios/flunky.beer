@@ -10,11 +10,12 @@ import { LeaderboardPage } from "./pages/leaderboard";
 import { UserPage } from "./pages/user";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { trpcClient, TRPCProvider } from "./trpc";
+import { createTrpcClient, TRPCProvider } from "./trpc";
 import { TeamPage } from "./pages/team";
 
 function App() {
 	const [queryClient] = useState(() => new QueryClient());
+	const [trpcClient] = useState(createTrpcClient);
 
 	return (
 		<TRPCProvider client={trpcClient} queryClient={queryClient}>

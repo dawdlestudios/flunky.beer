@@ -13,10 +13,11 @@ export const userRouter = router({
 		)
 		.query(async ({ input }) => {
 			let user: User & {
-                TeamMember: (TeamMember & {
-                    team: Team;
-                })[];
-            };;
+				TeamMember: (TeamMember & {
+					team: Team;
+				})[];
+			};
+
 			try {
 				user = await prisma.user.findUniqueOrThrow({
 					where: {
@@ -41,13 +42,12 @@ export const userRouter = router({
 				bio: user.bio,
 				profilePicture: user.profilePicture,
 				teams: user.TeamMember.map((tm) => {
-          const teamInfo: publicTeamInfo = {
-            id: tm.team.id,
-            name: tm.team.name
-          }
-          return teamInfo
-          
-        }),
+					const teamInfo: publicTeamInfo = {
+						id: tm.team.id,
+						name: tm.team.name,
+					};
+					return teamInfo;
+				}),
 			};
 
 			return { message: "success", user: userInfo };
