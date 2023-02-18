@@ -11,6 +11,7 @@ import { UserPage } from "./pages/user";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { trpcClient, TRPCProvider } from "./trpc";
+import { TeamPage } from "./pages/team";
 
 function App() {
 	const [queryClient] = useState(() => new QueryClient());
@@ -26,6 +27,7 @@ function App() {
 					<Route path="/events" component={EventsPage} />
 					<Route path="/about" component={AboutPage} />
 					<Route path="/user/:id" component={UserPage} />
+					<Route path="/team/:id" component={TeamPage} />
 				</Layout>
 			</QueryClientProvider>
 		</TRPCProvider>

@@ -30,6 +30,9 @@ export const UserPage = ({
 					<Text fontWeight={"medium"} fontSize="2xl">
 						Verlauf
 					</Text>
+					<Text fontSize="sm" color="gray.500">
+						Noch keine Einträge
+					</Text>
 				</Box>
 			</SimpleGrid>
 		</Container>

@@ -38,8 +38,10 @@ export default function ProfileCard({ username, displayName, avatar, teams, bio 
 			>
 				<Avatar
 					size={"xl"}
-					src={avatar || ""}
-					// alt={"Avatar Alt"}
+					src={
+						avatar ||
+						"https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+					}
 					mb={4}
 					pos={"relative"}
 					_after={{
@@ -67,9 +69,11 @@ export default function ProfileCard({ username, displayName, avatar, teams, bio 
 				<Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
 					{teams.map((team) => (
 						<Link key={team.id} href={`/team/${team.id}`}>
-							<Badge px={2} py={1} bg={useColorModeValue("gray.50", "gray.800")} fontWeight={"400"}>
-								{team.name}
-							</Badge>
+							<a href={`/team/${team.id}`}>
+								<Badge px={2} py={1} bg={useColorModeValue("gray.50", "gray.800")} fontWeight={"400"}>
+									{team.name}
+								</Badge>
+							</a>
 						</Link>
 					))}
 				</Stack>
