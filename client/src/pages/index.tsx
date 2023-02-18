@@ -3,7 +3,7 @@ import { Button, Flex, Heading, Image, Stack, Text, useBreakpointValue } from "@
 
 export const IndexPage = ({ params }: RouteComponentProps<DefaultParams>) => {
 	return (
-		<Stack minH={"calc(100vh - 4rem)"} direction={{ base: "column", md: "row" }}>
+		<Stack minH={"calc(100vh - 8rem)"} direction={{ base: "column", md: "row" }}>
 			<Flex p={8} flex={1} align={"center"} justify={"center"}>
 				<Stack spacing={6} w={"full"} maxW={"lg"}>
 					<Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
@@ -54,6 +54,7 @@ export const IndexPage = ({ params }: RouteComponentProps<DefaultParams>) => {
 				<Image
 					alt={"Login Image"}
 					objectFit={"cover"}
+					maxH={"calc(100vh - 8rem)"}
 					src={
 						"https://images.unsplash.com/photo-1600366060302-9fb7682b062b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGJlZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
 					}
