@@ -51,8 +51,7 @@ const NavLink = ({ children, href }: { children: ReactNode; href: string }) => (
 
 export default function Header() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-
-	const authenticated = useStore((state) => state.authenticated);
+	const [authenticated, logout] = useStore((state) => [state.authenticated, state.logout]);
 
 	return (
 		<>
@@ -95,7 +94,14 @@ export default function Header() {
 									<MenuItem>Profil</MenuItem>
 									<MenuItem>Teams</MenuItem>
 									<MenuDivider />
-									<MenuItem>Abmelden</MenuItem>
+									<MenuItem
+										onClick={() => {
+											logout();
+											window.location.replace("/");
+										}}
+									>
+										Abmelden
+									</MenuItem>
 								</MenuList>
 							</Menu>
 						) : (

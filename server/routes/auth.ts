@@ -55,7 +55,7 @@ export const authRouter = router({
 				throw new TRPCError({ code: "UNAUTHORIZED", message: "Email does not exist", cause: e });
 			}
 
-			const validPassword: boolean = await argon2.verify(input.password, user.password);
+			const validPassword: boolean = await argon2.verify(user.password, input.password);
 
 			if (validPassword) {
 				const token = createJWT(user.id);

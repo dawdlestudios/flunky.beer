@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { User } from "../../../server/prisma";
+import { privateUserInfo } from "../../../server/types";
 import { trpc } from "../trpc";
 
 type Store = {
@@ -25,14 +26,13 @@ export const useStore = create(
 		}),
 		{
 			name: "bier.cool",
-			getStorage: () => localStorage,
 		},
 	),
 );
 
 export const useUser = create<{
-	user?: User;
-	setUser: (user: User) => void;
+	user?: privateUserInfo;
+	setUser: (user: privateUserInfo) => void;
 }>((set) => ({
 	user: undefined,
 	setUser: (user) => set({ user }),
@@ -52,7 +52,7 @@ export const useSyncUser = () => {
 
 		if (user.data) {
 			// todo
-			setUser(user);
+			setUser(user.data as unknown as privateUserInfo);
 		}
 	}, [user.data, setUser]);
 };

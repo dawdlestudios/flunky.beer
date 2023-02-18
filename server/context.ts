@@ -1,18 +1,14 @@
 import { User } from "@prisma/client";
 import { inferAsyncReturnType, TRPCError } from "@trpc/server";
-import { CreateHTTPContextOptions } from "@trpc/server/adapters/standalone";
+import { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import { prisma } from "./prisma";
 import { verifyJWT } from "./utils/auth";
 
-export async function createContext({ req, res }: CreateHTTPContextOptions): Promise<{ user?: User }> {
-	// Create your context based on the request object
-	// Will be available as `ctx` in all your resolvers
-
-	// This is just an example of something you might want to do in your ctx fn
+export async function createContext({ req, res }: CreateExpressContextOptions): Promise<{ user?: User }> {
 	if (req.headers.authorization) {
-		const userID = verifyJWT(req.headers.authorization);
 		let user: User;
 		try {
+			const userID = verifyJWT(req.headers.authorization.replace("Bearer ", ""));
 			user = await prisma.user.findUniqueOrThrow({
 				where: {
 					id: userID,

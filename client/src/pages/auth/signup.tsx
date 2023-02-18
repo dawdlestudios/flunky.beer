@@ -21,7 +21,6 @@ import { useStore } from "../../state";
 
 export default function SignupPage() {
 	const [showPassword, setShowPassword] = useState(false);
-
 	const mutation = trpc.auth.signUp.useMutation();
 	const login = useStore((state) => state.login);
 	const [, setLocation] = useLocation();
@@ -31,7 +30,7 @@ export default function SignupPage() {
 		setLocation(`/user/${username}`);
 	};
 
-	const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const form = new FormData(e.target as HTMLFormElement);
 		let email = form.get("email");
@@ -46,7 +45,7 @@ export default function SignupPage() {
 		)
 			throw new Error("Invalid username, email or password");
 
-		await mutation.mutate(
+		mutation.mutate(
 			{ email, username, password },
 			{ onSuccess: (data) => handleSignupSuccess(data.token, data.username) },
 		);
@@ -84,6 +83,7 @@ export default function SignupPage() {
 								<FormLabel>Passwort</FormLabel>
 								<InputGroup>
 									<Input
+										name="password"
 										required
 										minLength={8}
 										placeholder="z.B. 123456"
@@ -101,6 +101,7 @@ export default function SignupPage() {
 							</FormControl>
 							<Stack spacing={10} pt={2}>
 								<Button
+									type="submit"
 									loadingText="Submitting"
 									size="lg"
 									bg={"blue.400"}
