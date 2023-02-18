@@ -52,8 +52,8 @@ export const AboutPage = () => {
 					<Text color={"gray.500"} fontSize={"lg"}>
 						Wir sind ein engagiertes und eingespieltes Team, das aus begeisterten Bier-Trinkern und erfahrenen
 						Entwicklern besteht. Unsere Leidenschaft für Bier und unser technisches Know-how haben uns
-						zusammengeführt, um eine Website zu entwickeln, die das Bier oder Flunkyball-Spielerlebnis auf
-						eine neue Ebene.
+						zusammengeführt, um eine Website zu entwickeln, die das Bier- oder Flunkyball-Spielerlebnis auf
+						eine neue Ebene hebt.
 						<br />
 						<br />
 						Wir sind stolz darauf, Teil der Community zu sein und freuen uns darauf, unsere Leidenschaft und
