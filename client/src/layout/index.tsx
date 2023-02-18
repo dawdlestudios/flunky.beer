@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import Footer from "./footer";
 import Header from "./header";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -6,6 +7,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 		<Box>
 			<Header />
 			{children}
+			<Footer />
 		</Box>
 	);
 };

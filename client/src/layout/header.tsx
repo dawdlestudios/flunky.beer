@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-const Links = ["Dashboard", "Projects", "Team"];
+const Links = ["Leaderboard", "Events"];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
 	<Link
@@ -50,7 +50,7 @@ export default function Header() {
 						onClick={isOpen ? onClose : onOpen}
 					/>
 					<HStack spacing={8} alignItems={"center"}>
-						<Box>Logo</Box>
+						<Box fontSize={35}>🍻</Box>
 						<HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
 							{Links.map((link) => (
 								<NavLink key={link}>{link}</NavLink>
