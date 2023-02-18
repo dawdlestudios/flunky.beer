@@ -35,15 +35,7 @@ const links = [
 
 const NavLink = ({ children, href }: { children: ReactNode; href: string }) => (
 	<Link href={href}>
-		<ChakraLink
-			px={2}
-			py={1}
-			rounded={"md"}
-			_hover={{
-				textDecoration: "none",
-				bg: useColorModeValue("gray.200", "gray.700"),
-			}}
-		>
+		<ChakraLink px={2} py={1} rounded={"md"} color={"black"}>
 			{children}
 		</ChakraLink>
 	</Link>
@@ -55,7 +47,11 @@ export default function Header() {
 
 	return (
 		<>
-			<Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+			<Box
+				bg={"linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(150, 240, 255) 0%, rgb(0, 212, 255) 100%)"}
+				px={4}
+				shadow={"lg"}
+			>
 				<Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
 					<IconButton
 						size={"md"}
@@ -67,7 +63,16 @@ export default function Header() {
 					<HStack spacing={8} alignItems={"center"}>
 						<Link href={"/"}>
 							<Box cursor={"pointer"} display={"flex"} alignItems="center" flexDirection={"row"}>
-								<Text>Bier.cool&nbsp;</Text>
+								<Text
+									background={
+										"linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(14, 56, 95) 0%, rgb(58, 197, 221) 100%)"
+									}
+									backgroundClip={"text"}
+									fontWeight={"extrabold"}
+									mr={2}
+								>
+									bier.cool&nbsp;
+								</Text>
 								<Text fontSize={35}>🍻</Text>
 							</Box>
 						</Link>{" "}
@@ -107,13 +112,29 @@ export default function Header() {
 						) : (
 							<>
 								<Link href={"/login"}>
-									<Button fontSize={"sm"} fontWeight={400} variant={"link"}>
+									<Button
+										fontSize={"sm"}
+										fontWeight={600}
+										variant={"link"}
+										colorScheme={"blue"}
+										color={"white"}
+									>
 										Anmelden
 									</Button>
 								</Link>
 								<Box width={4} />
 								<Link href={"/signup"}>
-									<Button colorScheme='blue' variant={"solid"} fontWeight={500}>
+									<Button
+										colorScheme='blue'
+										variant={"unstyled"}
+										pl={4}
+										pr={4}
+										fontWeight={500}
+										color={"white"}
+										background={
+											"linear-gradient(90deg, rgb(2, 0, 36) 0%, rgba(36, 119, 197, 0.582) 0%, rgba(58, 175, 221, 0.753) 100%)"
+										}
+									>
 										Registrieren
 									</Button>
 								</Link>

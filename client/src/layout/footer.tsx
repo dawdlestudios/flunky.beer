@@ -3,11 +3,11 @@ import {
 	chakra,
 	Container,
 	Flex,
-	Spacer,
 	Stack,
 	Text,
 	useColorModeValue,
 	VisuallyHidden,
+	Link as ChakraLink,
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { ReactNode } from "react";
@@ -59,11 +59,22 @@ export default function Footer() {
 			>
 				<Text>Made with 🍻 in Berlin</Text>
 				<Flex>
-					<Link href="/about">Über uns</Link>
+					<Link href="/about">
+						<ChakraLink px={2} py={1} rounded={"md"} color={"black"}>
+							Über uns
+						</ChakraLink>
+					</Link>
 					<Box width={3} />
-					<a target={"_blank"} href="https://henrygressmann.de/impressum">
+					<ChakraLink
+						px={2}
+						py={1}
+						rounded={"md"}
+						color={"black"}
+						target={"_blank"}
+						href="https://henrygressmann.de/impressum"
+					>
 						Impressum/Privacy Policy
-					</a>
+					</ChakraLink>
 				</Flex>
 				<Stack direction={"row"} spacing={6}>
 					<SocialButton label={"Twitter"} href={"#"}>
