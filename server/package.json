@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsup server.ts --watch --onSuccess \"node dist/server.js\""
+    "dev": "tsup index.ts --watch --onSuccess \"node dist/index.js\""
   },
   "keywords": [],
   "author": "",

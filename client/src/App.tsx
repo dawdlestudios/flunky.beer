@@ -1,24 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-import { Route, RouteComponentProps, DefaultParams } from 'wouter'
-
-const InboxPage = ({}: RouteComponentProps<DefaultParams>) => {
-  return <>Inbox</>
-};
+import "./App.css";
+import { Route } from "wouter";
+import { IndexPage } from "./pages";
 
 function App() {
-  return (
-      <div>
-        <Route path="/cock">
-          {
-            (params) => {
-              return "cock"
-            }
-          }
-        </Route>
-        <Route path="/inbox" component={InboxPage} />
-      </div>
-    );
+	return (
+		<div>
+			<Route path="/" component={IndexPage} />
+		</div>
+	);
 }
 
-export default App
+export default App;
