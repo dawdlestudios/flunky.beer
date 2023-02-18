@@ -1,7 +1,7 @@
-import { DefaultParams, RouteComponentProps } from "wouter";
+import { DefaultParams, Link, RouteComponentProps } from "wouter";
 import { Button, Flex, Heading, Image, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
 
-export const IndexPage = ({}: RouteComponentProps<DefaultParams>) => {
+export const IndexPage = ({ params }: RouteComponentProps<DefaultParams>) => {
 	return (
 		<Stack minH={"calc(100vh - 4rem)"} direction={{ base: "column", md: "row" }}>
 			<Flex p={8} flex={1} align={"center"} justify={"center"}>
@@ -32,17 +32,21 @@ export const IndexPage = ({}: RouteComponentProps<DefaultParams>) => {
 						Prost! Mach dich bereit für das ultimative Bierball-Turnier!
 					</Text>
 					<Stack direction={{ base: "column", md: "row" }} spacing={4}>
-						<Button
-							rounded={"full"}
-							bg={"blue.400"}
-							color={"white"}
-							_hover={{
-								bg: "blue.500",
-							}}
-						>
-							Registrieren
-						</Button>
-						<Button rounded={"full"}>Anmelden</Button>
+						<Link href="/signup">
+							<Button
+								rounded={"full"}
+								bg={"blue.400"}
+								color={"white"}
+								_hover={{
+									bg: "blue.500",
+								}}
+							>
+								Registrieren
+							</Button>
+						</Link>
+						<Link href="/login">
+							<Button rounded={"full"}>Anmelden</Button>
+						</Link>
 					</Stack>
 				</Stack>
 			</Flex>

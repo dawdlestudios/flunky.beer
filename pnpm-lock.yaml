@@ -34,6 +34,7 @@ importers:
       typescript: ^4.9.3
       vite: ^4.1.0
       wouter: ^2.10.0
+      zustand: ^4.3.3
     dependencies:
       '@chakra-ui/icons': 2.0.17_n3dxrjldmk5gnycgnw7noyo5tu
       '@chakra-ui/react': 2.5.1_gc24nmtdp32tnvrub3rgrqhnlu
@@ -52,6 +53,7 @@ importers:
       react-icons: 4.7.1_react@18.2.0
       sass: 1.58.3
       wouter: 2.10.0_react@18.2.0
+      zustand: 4.3.3_react@18.2.0
     devDependencies:
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
@@ -3841,4 +3843,20 @@ packages:
 
   /zod/3.20.6:
     resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
+    dev: false
+
+  /zustand/4.3.3_react@18.2.0:
+    resolution: {integrity: sha512-x2jXq8S0kfLGNwGh87nhRfEc2eZy37tSatpSoSIN+O6HIaBhgQHSONV/F9VNrNcBcKQu/E80K1DeHDYQC/zCrQ==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
     dev: false

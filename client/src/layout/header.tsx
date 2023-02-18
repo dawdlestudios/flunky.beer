@@ -4,7 +4,6 @@ import {
 	Flex,
 	Avatar,
 	HStack,
-	Link,
 	IconButton,
 	Button,
 	Menu,
@@ -15,23 +14,35 @@ import {
 	useDisclosure,
 	useColorModeValue,
 	Stack,
+	Link as ChakraLink,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { Link } from "wouter";
 
-const Links = ["Leaderboard", "Events"];
+const links = [
+	{
+		href: "/leaderboard",
+		label: "Leaderboard",
+	},
+	{
+		href: "/events",
+		label: "Events",
+	},
+];
 
-const NavLink = ({ children }: { children: ReactNode }) => (
-	<Link
-		px={2}
-		py={1}
-		rounded={"md"}
-		_hover={{
-			textDecoration: "none",
-			bg: useColorModeValue("gray.200", "gray.700"),
-		}}
-		href={"#"}
-	>
-		{children}
+const NavLink = ({ children, href }: { children: ReactNode; href: string }) => (
+	<Link href={href}>
+		<ChakraLink
+			px={2}
+			py={1}
+			rounded={"md"}
+			_hover={{
+				textDecoration: "none",
+				bg: useColorModeValue("gray.200", "gray.700"),
+			}}
+		>
+			{children}
+		</ChakraLink>
 	</Link>
 );
 
@@ -50,10 +61,16 @@ export default function Header() {
 						onClick={isOpen ? onClose : onOpen}
 					/>
 					<HStack spacing={8} alignItems={"center"}>
-						<Box fontSize={35}>🍻</Box>
+						<Link href={"/"}>
+							<Box cursor={"pointer"} fontSize={35}>
+								🍻
+							</Box>
+						</Link>{" "}
 						<HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-							{Links.map((link) => (
-								<NavLink key={link}>{link}</NavLink>
+							{links.map(({ href, label }) => (
+								<NavLink key={href} href={href}>
+									{label}
+								</NavLink>
 							))}
 						</HStack>
 					</HStack>
@@ -68,10 +85,10 @@ export default function Header() {
 								/>
 							</MenuButton>
 							<MenuList>
-								<MenuItem>Link 1</MenuItem>
-								<MenuItem>Link 2</MenuItem>
+								<MenuItem>Profil</MenuItem>
+								<MenuItem>Teams</MenuItem>
 								<MenuDivider />
-								<MenuItem>Link 3</MenuItem>
+								<MenuItem>Abmelden</MenuItem>
 							</MenuList>
 						</Menu>
 					</Flex>
@@ -80,8 +97,10 @@ export default function Header() {
 				{isOpen ? (
 					<Box pb={4} display={{ md: "none" }}>
 						<Stack as={"nav"} spacing={4}>
-							{Links.map((link) => (
-								<NavLink key={link}>{link}</NavLink>
+							{links.map(({ href, label }) => (
+								<NavLink key={href} href={href}>
+									{label}
+								</NavLink>
 							))}
 						</Stack>
 					</Box>
