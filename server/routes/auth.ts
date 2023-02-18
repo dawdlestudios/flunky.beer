@@ -3,7 +3,7 @@ import { z } from "zod";
 import { prisma } from "../prisma";
 import type { User } from "../prisma";
 import argon2 from "argon2";
-import { createJWT, verifyJWT } from "../utils/auth";
+import { createJWT } from "../utils/auth";
 import { TRPCError } from "@trpc/server";
 
 export const authRouter = router({

@@ -6,7 +6,8 @@
   "scripts": {
     "client": "pnpm --filter @balls/client dev",
     "server": "pnpm --filter @balls/server dev",
-    "dev": "npm-run-all --parallel client server"
+    "dev": "npm-run-all --parallel client server",
+    "format": "rome format --write server client"
   },
   "keywords": [],
   "author": "",

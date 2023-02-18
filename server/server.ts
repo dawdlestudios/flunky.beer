@@ -1,6 +1,7 @@
 import { initTRPC } from "@trpc/server";
+import { Context } from "./context"
 
-const t = initTRPC.create({});
+const t = initTRPC.create<Context>({});
 
 export const middleware = t.middleware;
 export const router = t.router;
@@ -11,6 +12,3 @@ export const appRouter = router({});
 // Export type router type signature,
 // NOT the router itself.
 export type AppRouter = typeof appRouter;
-
- 
- 
