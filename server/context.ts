@@ -4,7 +4,7 @@ import { CreateHTTPContextOptions } from "@trpc/server/adapters/standalone";
 import { prisma } from "./prisma";
 import { verifyJWT } from "./utils/auth";
 
-export async function createContext({ req, res }: CreateHTTPContextOptions): Promise<{user?: User}> {
+export async function createContext({ req, res }: CreateHTTPContextOptions): Promise<{ user?: User }> {
 	// Create your context based on the request object
 	// Will be available as `ctx` in all your resolvers
 
@@ -23,7 +23,7 @@ export async function createContext({ req, res }: CreateHTTPContextOptions): Pro
 		}
 		return { user };
 	}
-	return {user: undefined};
+	return { user: undefined };
 }
 
 export type Context = inferAsyncReturnType<typeof createContext>;

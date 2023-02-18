@@ -6,6 +6,7 @@ import LoginPage from "./pages/auth/login";
 import SignupPage from "./pages/auth/signup";
 import { EventsPage } from "./pages/events";
 import { LeaderboardPage } from "./pages/leaderboard";
+import { UserPage } from "./pages/user";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 			<Route path="/leaderboard" component={LeaderboardPage} />
 			<Route path="/events" component={EventsPage} />
 			<Route path="/about" component={AboutPage} />
+			<Route path="/user/:id" component={UserPage} />
 		</Layout>
 	);
 }
