@@ -1,6 +1,7 @@
 import { Route } from "wouter";
 import { Layout } from "./layout";
 import { IndexPage } from "./pages";
+import { AboutPage } from "./pages/about";
 import LoginPage from "./pages/auth/login";
 import SignupPage from "./pages/auth/signup";
 import { EventsPage } from "./pages/events";
@@ -14,6 +15,7 @@ function App() {
 			<Route path="/signup" component={SignupPage} />
 			<Route path="/leaderboard" component={LeaderboardPage} />
 			<Route path="/events" component={EventsPage} />
+			<Route path="/about" component={AboutPage} />
 		</Layout>
 	);
 }

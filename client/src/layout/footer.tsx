@@ -1,4 +1,14 @@
-import { Box, chakra, Container, Stack, Text, useColorModeValue, VisuallyHidden } from "@chakra-ui/react";
+import {
+	Box,
+	chakra,
+	Container,
+	Flex,
+	Spacer,
+	Stack,
+	Text,
+	useColorModeValue,
+	VisuallyHidden,
+} from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { ReactNode } from "react";
 import { Link } from "wouter";
@@ -48,9 +58,13 @@ export default function Footer() {
 				align={{ base: "center", md: "center" }}
 			>
 				<Text>Made with 🍻 in Berlin</Text>
-				<a target={"_blank"} href="https://henrygressmann.de/impressum">
-					Impressum/Privacy Policy
-				</a>
+				<Flex>
+					<Link href="/about">Über uns</Link>
+					<Box width={3} />
+					<a target={"_blank"} href="https://henrygressmann.de/impressum">
+						Impressum/Privacy Policy
+					</a>
+				</Flex>
 				<Stack direction={"row"} spacing={6}>
 					<SocialButton label={"Twitter"} href={"#"}>
 						<FaTwitter />

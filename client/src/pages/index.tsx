@@ -21,7 +21,7 @@ export const IndexPage = ({ params }: RouteComponentProps<DefaultParams>) => {
 								zIndex: -1,
 							}}
 						>
-							Bierball
+							Competetive Drinking
 						</Text>
 						<br />{" "}
 						<Text color={"blue.400"} as={"span"}>
@@ -29,7 +29,7 @@ export const IndexPage = ({ params }: RouteComponentProps<DefaultParams>) => {
 						</Text>{" "}
 					</Heading>
 					<Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
-						Prost! Mach dich bereit für das ultimative Bierball-Turnier!
+						Prost! Mach dich bereit für das ultimative Turnier!
 					</Text>
 					<Stack direction={{ base: "column", md: "row" }} spacing={4}>
 						<Link href="/signup">
