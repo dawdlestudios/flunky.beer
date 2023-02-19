@@ -37,13 +37,16 @@ model TeamMember {
 }
 
 model Team {
-  id               String             @id @default(cuid())
-  slug             String             @unique
-  name             String
-  contact          String
-  MatchParticipant MatchParticipant[]
-  TeamMember       TeamMember[]
-  TeamEvent        TeamEvent[]
+  id                String             @id @default(cuid())
+  slug              String             @unique
+  name              String
+  contact           String
+  description       String
+  picture           String
+  pictureHeadding   String
+  MatchParticipants MatchParticipant[]
+  TeamMember        TeamMember[]
+  TeamEvent         TeamEvent[]
 }
 
 model TeamEvent {
@@ -70,10 +73,10 @@ model Event {
 }
 
 model Match {
-  id               String             @id @default(cuid())
-  event            Event              @relation(fields: [eventId], references: [id])
-  eventId          String
-  MatchParticipant MatchParticipant[]
+  id                String             @id @default(cuid())
+  event             Event              @relation(fields: [eventId], references: [id])
+  eventId           String
+  MatchParticipants MatchParticipant[]
 }
 
 model MatchParticipant {
