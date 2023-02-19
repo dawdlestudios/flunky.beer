@@ -47,7 +47,6 @@ const NavLink = ({ children, href }: { children: ReactNode; href: string }) => (
 export default function Header() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [authenticated, logout] = useStore((state) => [state.authenticated, state.logout]);
-	const user = useUser((state) => state.user);
 
 	return (
 		<>
@@ -74,7 +73,7 @@ export default function Header() {
 									fontWeight={"extrabold"}
 									mr={2}
 								>
-									bier.cool&nbsp;
+									flunky.beer&nbsp;
 								</Text>
 								<Text fontSize={35}>🍻</Text>
 							</Box>

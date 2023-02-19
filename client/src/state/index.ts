@@ -24,7 +24,7 @@ export const useStore = create(
 			},
 		}),
 		{
-			name: "bier.cool",
+			name: "flunky.beer",
 		},
 	),
 );

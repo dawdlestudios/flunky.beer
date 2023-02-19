@@ -68,8 +68,8 @@ export const EditProfilePage = () => {
 							<FormLabel>Bezeichnung für das Spiel</FormLabel>
 							<RadioGroup name="preference">
 								<Stack direction='row' gap="3">
-									<Radio value='flunkyball'>Flunkyball</Radio>
-									<Radio value='bierball'>Bierball</Radio>
+									<Radio value='FLUNKY_BALL'>Flunkyball</Radio>
+									<Radio value='BIER_BALL'>Bierball</Radio>
 								</Stack>
 							</RadioGroup>
 						</FormControl>
