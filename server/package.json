@@ -7,6 +7,8 @@
     "dev": "tsup index.ts --watch --onSuccess \"node dist/index.js\"",
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
+    "reset": "prisma migrate reset",
+    "seed": "ts-node utils/seed.ts",
     "studio": "BROWSER=none prisma studio"
   },
   "keywords": [],
@@ -29,6 +31,7 @@
     "@types/node": "^18.14.0",
     "prisma": "^4.10.1",
     "tsup": "^6.6.3",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "ts-node": "10.9.1"
   }
 }

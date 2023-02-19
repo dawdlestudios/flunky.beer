@@ -1,5 +1,4 @@
 import { Avatar, Box, Button, Container, Flex, Text } from "@chakra-ui/react";
-import { Event } from "../../../server/prisma";
 
 export const EventPage = () => {
 	const event = {
@@ -26,7 +25,7 @@ export const EventPage = () => {
 			>
 				<Container maxW={"5xl"} py={12}>
 					<Flex flex={1} direction={"row"} align={"center"} flexDirection={{ base: "column", md: "row" }}>
-						<Avatar size={"1xl"} src={event.picture} mr={8} />
+						<Avatar size={"2xl"} src={event.picture} mr={8} />
 						<div>
 							<Text variant={"heading"} fontSize={"4xl"}>
 								{event.name}
