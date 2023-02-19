@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsup index.ts --watch --onSuccess \"node dist/index.js\"",
     "generate": "prisma generate",
-    "migrate": "prisma migrate dev"
+    "migrate": "prisma migrate dev",
+    "studio": "BROWSER=none prisma studio"
   },
   "keywords": [],
   "author": "",
