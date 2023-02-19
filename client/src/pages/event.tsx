@@ -19,6 +19,8 @@ import { trpc } from "../trpc";
 const pug =
 	"https://images.unsplash.com/photo-1529927066849-79b791a69825?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80";
 
+const coolGradient = `linear-gradient(180deg, rgb(99.608% 99.608% 99.608% / 0) 0%, rgb(99.655% 99.655% 99.655% / 0.12109375) 6.25%, rgb(99.7% 99.7% 99.7% / 0.234375) 12.5%, rgb(99.741% 99.741% 99.741% / 0.33984375) 18.75%, rgb(99.779% 99.779% 99.779% / 0.4375) 25%, rgb(99.815% 99.815% 99.815% / 0.52734375) 31.25%, rgb(99.847% 99.847% 99.847% / 0.609375) 37.5%, rgb(99.876% 99.876% 99.876% / 0.68359375) 43.75%, rgb(99.902% 99.902% 99.902% / 0.75) 50%, rgb(99.925% 99.925% 99.925% / 0.80859375) 56.25%, rgb(99.945% 99.945% 99.945% / 0.859375) 62.5%, rgb(99.962% 99.962% 99.962% / 0.90234375) 68.75%, rgb(99.975% 99.975% 99.975% / 0.9375) 75%, rgb(99.986% 99.986% 99.986% / 0.96484375) 81.25%, rgb(99.994% 99.994% 99.994% / 0.984375) 87.5%, rgb(99.998% 99.998% 99.998% / 0.99609375) 93.75%, rgb(100% 100% 100%) 100% )`;
+
 export const EventPage = ({
 	params,
 }: RouteComponentProps<{
@@ -43,9 +45,7 @@ export const EventPage = ({
 				teams={user?.teamMember.map((t) => t.team) ?? []}
 			/>
 			<Flex
-				background={`linear-gradient(#fff0, #fff0, #ffffffeb, rgb(255, 255, 255)), url(${
-					event?.pictureHeadding ?? pug
-				})`}
+				background={`${coolGradient}, url(${event?.pictureHeadding ?? pug})`}
 				backgroundSize="cover"
 				backgroundRepeat="no-repeat"
 				minH="400px"
