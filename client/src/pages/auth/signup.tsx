@@ -12,6 +12,8 @@ import {
 	Text,
 	useColorModeValue,
 	FormErrorMessage,
+	RadioGroup,
+	Radio,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
@@ -116,7 +118,16 @@ export default function SignupPage() {
 									</InputRightElement>
 								</InputGroup>
 							</FormControl>
-							<Stack spacing={10} pt={2}>
+							<FormControl id="contact" isRequired>
+								<FormLabel>Bezeichnung für das Spiel</FormLabel>
+								<RadioGroup name="preference">
+									<Stack direction='row' justify={"space-evenly"}>
+										<Radio value='flunkyball'>Flunkyball</Radio>
+										<Radio value='bierball'>Bierball</Radio>
+									</Stack>
+								</RadioGroup>
+							</FormControl>
+							<Stack spacing={5} pt={5}>
 								<Button
 									type="submit"
 									loadingText="Submitting"
@@ -130,7 +141,7 @@ export default function SignupPage() {
 									Registrieren
 								</Button>
 							</Stack>
-							<Stack pt={6}>
+							<Stack pt={1}>
 								<Text align={"center"}>
 									Du hast schon ein Konto? <Link href="/login">Anmelden</Link>
 								</Text>

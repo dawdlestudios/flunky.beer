@@ -12,17 +12,20 @@ import {
 	MenuItem,
 	MenuDivider,
 	useDisclosure,
-	useColorModeValue,
 	Stack,
 	Link as ChakraLink,
 	Text,
-	Spacer,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Link } from "wouter";
-import { useStore } from "../state";
+import { useStore, useUser } from "../state";
 
 const links = [
+	{
+		href: "/me",
+		label: "Dashboard",
+		auth: true,
+	},
 	{
 		href: "/leaderboard",
 		label: "Leaderboard",
@@ -44,6 +47,7 @@ const NavLink = ({ children, href }: { children: ReactNode; href: string }) => (
 export default function Header() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [authenticated, logout] = useStore((state) => [state.authenticated, state.logout]);
+	const user = useUser((state) => state.user);
 
 	return (
 		<>
@@ -76,11 +80,14 @@ export default function Header() {
 							</Box>
 						</Link>{" "}
 						<HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-							{links.map(({ href, label }) => (
-								<NavLink key={href} href={href}>
-									{label}
-								</NavLink>
-							))}
+							{links.map(
+								({ href, label, auth }) =>
+									(auth === undefined || authenticated === auth) && (
+										<NavLink key={href} href={href}>
+											{label}
+										</NavLink>
+									),
+							)}
 						</HStack>
 					</HStack>
 					<Flex alignItems={"center"}>
@@ -95,8 +102,12 @@ export default function Header() {
 									/>
 								</MenuButton>
 								<MenuList>
-									<MenuItem>Profil</MenuItem>
-									<MenuItem>Teams</MenuItem>
+									<Link href="/me">
+										<MenuItem>Profil</MenuItem>
+									</Link>
+									<Link href="/me/teams">
+										<MenuItem>Teams</MenuItem>
+									</Link>
 									<MenuDivider />
 									<MenuItem
 										onClick={() => {

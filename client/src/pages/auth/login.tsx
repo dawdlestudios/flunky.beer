@@ -59,11 +59,11 @@ export default function LoginPage() {
 								<FormErrorMessage>{mutation.error?.message || mutation.error?.data?.code}</FormErrorMessage>
 							</FormControl>
 							<FormControl id="email">
-								<FormLabel>Email address</FormLabel>
+								<FormLabel>E-Mail Adresse</FormLabel>
 								<Input name="email" type="email" />
 							</FormControl>
 							<FormControl id="password">
-								<FormLabel>Password</FormLabel>
+								<FormLabel>Passwort</FormLabel>
 								<Input name="password" type="password" />
 							</FormControl>
 							<Stack spacing={10}>

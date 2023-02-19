@@ -1,5 +1,5 @@
 import { Container, Flex, Text } from "@chakra-ui/react";
-import { useUser } from "../state";
+import { useUser } from "../../state";
 
 export const MePage = () => {
 	const user = useUser();
