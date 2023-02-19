@@ -65,12 +65,13 @@ importers:
     specifiers:
       '@prisma/client': ^4.10.1
       '@trpc/server': ^10.11.1
-      '@tsconfig/node17': ^1.0.2
+      '@tsconfig/node18': ^1.0.1
       '@types/cors': ^2.8.13
       '@types/express': ^4.17.17
       '@types/jsonwebtoken': ^9.0.1
       '@types/node': ^18.14.0
       argon2: ^0.30.3
+      aws4fetch: ^1.0.17
       cors: ^2.8.5
       express: ^4.18.2
       jsonwebtoken: ^9.0.0
@@ -83,12 +84,13 @@ importers:
       '@prisma/client': 4.10.1_prisma@4.10.1
       '@trpc/server': 10.11.1
       argon2: 0.30.3
+      aws4fetch: 1.0.17
       cors: 2.8.5
       express: 4.18.2
       jsonwebtoken: 9.0.0
       zod: 3.20.6
     devDependencies:
-      '@tsconfig/node17': 1.0.2
+      '@tsconfig/node18': 1.0.1
       '@types/cors': 2.8.13
       '@types/express': 4.17.17
       '@types/jsonwebtoken': 9.0.1
@@ -2133,8 +2135,8 @@ packages:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
     dev: true
 
-  /@tsconfig/node17/1.0.2:
-    resolution: {integrity: sha512-L0dB4gaL8jtM7+J321MlPOTxJGhN4O3BSpd8nPTPzFHQa5BAIpm/FwIw05UyMXvUCrEDU11HNLDPawvUl6sV/Q==}
+  /@tsconfig/node18/1.0.1:
+    resolution: {integrity: sha512-sNFeK6X2ATlhlvzyH4kKYQlfHXE2f2/wxtB9ClvYXevWpmwkUT7VaSrjIN9E76Qebz8qP5JOJJ9jD3QoD/Z9TA==}
     dev: true
 
   /@types/body-parser/1.19.2:
@@ -2371,6 +2373,10 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
     dev: true
+
+  /aws4fetch/1.0.17:
+    resolution: {integrity: sha512-4IbOvsxqxeOSxI4oA+8xEO8SzBMVlzbSTgGy/EF83rHnQ/aKtP6Sc6YV/k0oiW0mqrcxuThlbDosnvetGOuO+g==}
+    dev: false
 
   /babel-plugin-macros/3.1.0:
     resolution: {integrity: sha512-Cg7TFGpIr01vOQNODXOOaGz2NpCU5gl8x1qJFbb6hbZxR7XrcE2vtbAsTAbJ7/xwJtUuJEw8K8Zr/AE0LHlesg==}
