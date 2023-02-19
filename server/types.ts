@@ -12,8 +12,8 @@ export type publicUserInfo = {
 	id: string;
 	username: string;
 	displayName: string;
-	bio: string;
-	profilePicture: string;
+	bio: string | null;
+	profilePicture: string | null;
 	preference: string;
 	TeamMember: publicTeamMemberInfo[];
 };

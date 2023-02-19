@@ -24,7 +24,7 @@ export const IndexPage = ({ params }: RouteComponentProps<DefaultParams>) => {
 								zIndex: -1,
 							}}
 						>
-							Competetive Drinking
+							Flunkyball
 						</Text>
 						<br />{" "}
 						<Text color={"blue.400"} as={"span"}>

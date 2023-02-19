@@ -9,7 +9,7 @@ import {
 	VisuallyHidden,
 	Link as ChakraLink,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { ReactNode } from "react";
 import { Link } from "wouter";
 
@@ -82,8 +82,8 @@ export default function Footer() {
 					<SocialButton label={"Twitter"} href={"#"}>
 						<FaTwitter />
 					</SocialButton>
-					<SocialButton label={"YouTube"} href={"#"}>
-						<FaYoutube />
+					<SocialButton label={"YouTube"} href={"https://github.com/dawdlestudios/balls"}>
+						<FaGithub />
 					</SocialButton>
 					<SocialButton label={"Instagram"} href={"#"}>
 						<FaInstagram />

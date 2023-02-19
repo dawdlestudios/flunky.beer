@@ -10,8 +10,11 @@ import {
 	TabPanels,
 	Tabs,
 	Text,
+	useDisclosure,
 } from "@chakra-ui/react";
 import { RouteComponentProps } from "wouter";
+import { SelectTeamModal } from "../components/select-team-modal";
+import { useUser } from "../state";
 import { trpc } from "../trpc";
 const pug =
 	"https://images.unsplash.com/photo-1529927066849-79b791a69825?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80";
@@ -22,14 +25,25 @@ export const EventPage = ({
 	id: string;
 }>) => {
 	const data = trpc.event.getEvent.useQuery({ slug: params.id });
+	const user = useUser((state) => state.user);
 	const event = data.data?.event;
 
-	console.log(data.isLoading);
+	const { isOpen, onClose, onOpen } = useDisclosure();
+
+	const onJoinEvent = async (teamId: string) => {
+		console.log("Joining event with team", teamId);
+	};
 
 	return (
 		<Box minH="calc(100vh - 8rem)">
+			<SelectTeamModal
+				onSelected={onJoinEvent}
+				isOpen={isOpen}
+				onClose={onClose}
+				teams={user?.teamMember.map((t) => t.team) ?? []}
+			/>
 			<Flex
-				background={`linear-gradient(#ffffff00, #ffffff00, rgb(255, 255, 255)), url(${
+				background={`linear-gradient(#fff0, #fff0, #ffffffeb, rgb(255, 255, 255)), url(${
 					event?.pictureHeadding ?? pug
 				})`}
 				backgroundSize="cover"
@@ -46,7 +60,7 @@ export const EventPage = ({
 								{event?.name ?? "Loading..."}
 							</Text>
 							<Text>{event?.description}</Text>
-							<Button colorScheme="blue" variant="outline" mt={4}>
+							<Button colorScheme="blue" variant="outline" mt={4} onClick={onOpen}>
 								Teilnehmen
 							</Button>
 						</div>
