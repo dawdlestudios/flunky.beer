@@ -26,6 +26,10 @@ async function main() {
 									id: "test-team-id",
 									name: "Test Team",
 									contact: "test contact",
+									slug: "Test",
+									description: "Test",
+									picture: "Test",
+									pictureHeadding: "Test",
 								},
 								where: {
 									id: "test-team-id",
