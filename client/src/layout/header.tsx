@@ -48,9 +48,8 @@ export default function Header() {
 	return (
 		<>
 			<Box
-				bg={"linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(150, 240, 255) 0%, rgb(0, 212, 255) 100%)"}
+				bg={"linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(218, 218, 218) 0%, rgb(140, 168, 173) 100%)"}
 				px={4}
-				shadow={"lg"}
 			>
 				<Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
 					<IconButton

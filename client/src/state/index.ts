@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { User } from "../../../server/prisma";
 import { privateUserInfo } from "../../../server/types";
 import { trpc } from "../trpc";
 

@@ -14,6 +14,7 @@ import { createTrpcClient, TRPCProvider } from "./trpc";
 import { TeamPage } from "./pages/team";
 import { useSyncUser } from "./state";
 import { EventPage } from "./pages/event";
+import { MePage } from "./pages/me";
 
 function App() {
 	const [queryClient] = useState(() => new QueryClient());
@@ -40,6 +41,7 @@ function Router() {
 				<Route path="/leaderboard" component={LeaderboardPage} />
 				<Route path="/events" component={EventsPage} />
 				<Route path="/about" component={AboutPage} />
+				<Route path="/me" component={MePage} />
 				<Route path="/user/:id" component={UserPage} />
 				<Route path="/team/:id" component={TeamPage} />
 				<Route path="/event/:id" component={EventPage} />
