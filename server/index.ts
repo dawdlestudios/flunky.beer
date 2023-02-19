@@ -7,6 +7,7 @@ import { router } from "./trpc";
 import express from "express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { cors } from "./middlewares/cors";
+import { TRPCError } from "@trpc/server";
 
 export const appRouter = router({
 	user: userRouter,
@@ -25,6 +26,19 @@ app.use(
 	"/api",
 	createExpressMiddleware({
 		router: appRouter,
+		onError({ error, ctx, type }) {
+			if (error.message.startsWith("[")) {
+				try {
+					const json = JSON.parse(error.message);
+					if (json?.[0]?.message) {
+						error.message = json?.[0]?.message;
+					}
+				} catch (e) {}
+			}
+
+			error.message ??= "Something went wrong";
+		},
+
 		createContext,
 	}),
 );
