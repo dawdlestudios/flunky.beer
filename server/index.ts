@@ -8,10 +8,12 @@ import express from "express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { cors } from "./middlewares/cors";
 import { TRPCError } from "@trpc/server";
+import { eventRouter } from "./routes/event";
 
 export const appRouter = router({
 	user: userRouter,
 	auth: authRouter,
+	event: eventRouter,
 });
 
 // Export type router type signature,

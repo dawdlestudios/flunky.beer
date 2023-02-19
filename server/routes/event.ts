@@ -12,8 +12,8 @@ export const eventRouter = router({
 				limit: z.number().max(50),
 			}),
 		)
-		.mutation(async ({ input }) => {
-			const events = prisma.event.findMany({
+		.query(async ({ input }) => {
+			const events = await prisma.event.findMany({
 				where: {
 					public: true,
 					end: {

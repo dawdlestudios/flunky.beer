@@ -30,6 +30,35 @@ async function main() {
 									description: "Test",
 									picture: "Test",
 									pictureHeadding: "Test",
+									TeamEvent: {
+										connectOrCreate: {
+											where: {
+												id: "test-team-event-id",
+											},
+											create: {
+												id: "test-team-event-id",
+												role: "ADMIN",
+												event: {
+													connectOrCreate: {
+														where: {
+															id: "test-event-id",
+														},
+														create: {
+															id: "test-event-id",
+															description: "test",
+															end: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+															name: "test",
+															picture: "test",
+															pictureHeadding: "https://i.imgur.com/1ZQZQ9r.png",
+															public: true,
+															slug: "test-event-slug",
+															start: new Date(),
+														},
+													},
+												},
+											},
+										},
+									},
 								},
 								where: {
 									id: "test-team-id",

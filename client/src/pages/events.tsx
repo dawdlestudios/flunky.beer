@@ -11,8 +11,13 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
+import { Link } from "wouter";
+import { Event } from "../../../server/prisma";
+import { trpc } from "../trpc";
 
 export const EventsPage = () => {
+	const data = trpc.event.getEvents.useQuery({ limit: 20, ofset: 0 });
+
 	return (
 		<Container maxW={"5xl"} py={12} minH="calc(100vh - 8rem)" display="flex">
 			<Flex flex={1} direction={"column"}>
@@ -21,17 +26,16 @@ export const EventsPage = () => {
 				</Text>
 
 				<SimpleGrid gap={10}>
-					<Event />
-					<Event />
-					<Event />
-					<Event />
+					{data.data?.events?.map?.((event) => {
+						return <Event event={event} />;
+					})}
 				</SimpleGrid>
 			</Flex>
 		</Container>
 	);
 };
 
-const Event = () => {
+const Event = ({ event }: { event: Omit<Event, "start" | "end"> & { start: string; end: string } }) => {
 	return (
 		<Card direction={{ base: "column", md: "row" }} overflow='hidden' variant='filled'>
 			<Image
@@ -43,14 +47,15 @@ const Event = () => {
 
 			<Stack>
 				<CardBody>
-					<Heading size='md'>Test Event</Heading>
-
-					<Text py='2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod</Text>
+					<Heading size='md'>{event.name}</Heading>
+					<Text py='2'>{event.description}</Text>
 				</CardBody>
 				<CardFooter>
-					<Button variant='ghost' colorScheme='blue'>
-						Details
-					</Button>
+					<Link href={`/event/${event.slug}`}>
+						<Button variant='ghost' colorScheme='blue'>
+							Details
+						</Button>
+					</Link>
 				</CardFooter>
 			</Stack>
 		</Card>
