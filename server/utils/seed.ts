@@ -12,7 +12,6 @@ async function main() {
 			username: "test",
 			bio: "test bio",
 			contact: "test contact",
-			profilePicture: "https://i.imgur.com/1ZQZQ9r.png",
 			TeamMember: {
 				connectOrCreate: {
 					where: {
@@ -28,8 +27,6 @@ async function main() {
 									contact: "test contact",
 									slug: "Test",
 									description: "Test",
-									picture: "Test",
-									pictureHeadding: "Test",
 									TeamEvent: {
 										connectOrCreate: {
 											where: {
@@ -48,8 +45,6 @@ async function main() {
 															description: "test",
 															end: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
 															name: "test",
-															picture: "test",
-															pictureHeadding: "https://i.imgur.com/1ZQZQ9r.png",
 															public: true,
 															slug: "test-event-slug",
 															start: new Date(),
@@ -74,6 +69,34 @@ async function main() {
 		update: {},
 		where: {
 			id: "test-user-id",
+		},
+	});
+
+	await prisma.event.upsert({
+		create: {
+			id: "rar-event-id",
+			description: `flunky.beer ist dieses Jahr auf dem Rock am Ring Festival dabei.\nWir freuen uns auf euch!`,
+			end: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+			start: new Date(),
+			name: "flunky.beer @ Rock am Ring",
+			public: true,
+			slug: "rock-am-ring-23",
+			TeamEvent: {
+				connectOrCreate: {
+					where: {
+						id: "rar-team-event-id",
+					},
+					create: {
+						id: "rar-team-event-id",
+						role: "ADMIN",
+						teamID: "test-team-id",
+					},
+				},
+			},
+		},
+		update: {},
+		where: {
+			id: "rar-event-id",
 		},
 	});
 }

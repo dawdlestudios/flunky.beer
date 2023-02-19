@@ -21,13 +21,13 @@ export const LeaderboardPage = () => {
 		<Container maxW={"5xl"} py={12} minH="calc(100vh - 8rem)" display="flex">
 			<Flex flex={1} direction={"column"}>
 				<Text variant={"heading"} fontSize={"4xl"} mb={4}>
-					Leaderboard
+					Rangliste
 				</Text>
 
 				<Tabs flex={1} w="100%">
 					<TabList mb="5">
 						<Tab>Teams</Tab>
-						<Tab>Users</Tab>
+						<Tab>Individuell Spieler</Tab>
 					</TabList>
 
 					<TabPanels>

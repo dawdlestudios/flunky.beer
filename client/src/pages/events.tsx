@@ -27,7 +27,7 @@ export const EventsPage = () => {
 
 				<SimpleGrid gap={10}>
 					{data.data?.events?.map?.((event) => {
-						return <Event event={event} />;
+						return <Event key={event.id} event={event} />;
 					})}
 				</SimpleGrid>
 			</Flex>
@@ -37,12 +37,23 @@ export const EventsPage = () => {
 
 const Event = ({ event }: { event: Omit<Event, "start" | "end"> & { start: string; end: string } }) => {
 	return (
-		<Card direction={{ base: "column", md: "row" }} overflow='hidden' variant='filled'>
+		<Card
+			background={"linear-gradient(-90deg, rgb(2, 0, 36) 0%, rgb(241, 241, 241) 0%, rgb(216, 233, 236) 100%)"}
+			direction={{ base: "column", md: "row" }}
+			overflow='hidden'
+			variant='filled'
+			borderRadius='2xl'
+			shadow={"md"}
+		>
 			<Image
+				background={
+					"linear-gradient(-90deg, rgb(2, 0, 36) 0%, rgb(241, 241, 241) 0%, rgb(216, 233, 236) 100%)"
+				}
 				objectFit='cover'
+				w={{ base: "100%", md: "200px" }}
+				height={{ base: "200px", md: "100%" }}
 				maxW={{ base: "100%", md: "200px" }}
 				src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-				alt='Caffe Latte'
 			/>
 
 			<Stack>

@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "tsup index.ts --watch --onSuccess \"node dist/index.js\"",
     "generate": "prisma generate",
-    "migrate": "prisma migrate dev",
-    "reset": "prisma migrate reset",
+    "migrate": " prisma migrate dev -n init",
+    "reset": "prisma migrate reset --force && pnpm seed",
     "seed": "ts-node utils/seed.ts",
     "studio": "BROWSER=none prisma studio"
   },

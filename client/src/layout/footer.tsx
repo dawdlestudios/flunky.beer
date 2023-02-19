@@ -57,14 +57,16 @@ export default function Footer() {
 				justify={{ base: "center", md: "space-between" }}
 				align={{ base: "center", md: "center" }}
 			>
-				<Text>Made with 🍻 in Berlin</Text>
 				<Flex>
+					<Flex align="center">
+						<Text>Made with 🍻 in Berlin</Text>
+					</Flex>
+					<Box width={3} />
 					<Link href="/about">
 						<ChakraLink px={2} py={1} rounded={"md"} color={"black"}>
 							Über uns
 						</ChakraLink>
 					</Link>
-					<Box width={3} />
 					<ChakraLink
 						px={2}
 						py={1}

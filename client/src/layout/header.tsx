@@ -27,12 +27,16 @@ const links = [
 		auth: true,
 	},
 	{
-		href: "/leaderboard",
-		label: "Leaderboard",
-	},
-	{
 		href: "/events",
 		label: "Events",
+	},
+	{
+		href: "/teams",
+		label: "Teams",
+	},
+	{
+		href: "/leaderboard",
+		label: "Globale Rangliste",
 	},
 ];
 
@@ -67,7 +71,7 @@ export default function Header() {
 							<Box cursor={"pointer"} display={"flex"} alignItems="center" flexDirection={"row"}>
 								<Text
 									background={
-										"linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(14, 56, 95) 0%, rgb(58, 197, 221) 100%)"
+										"linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(7, 31, 54) 0%, rgb(83, 147, 192) 100%)"
 									}
 									backgroundClip={"text"}
 									fontWeight={"extrabold"}
