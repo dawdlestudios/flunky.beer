@@ -19,6 +19,7 @@ model User {
   bio            String
   contact        String
   profilePicture String
+  preference     String
   role           String
   TeamMember     TeamMember[]
   follows        User[]       @relation("UserFollows")
@@ -45,9 +46,11 @@ model Team {
 }
 
 model Event {
-  id          String  @id @default(cuid())
-  organizer   Team    @relation(fields: [teamID], references: [id])
+  id          String   @id @default(cuid())
+  organizer   Team     @relation(fields: [teamID], references: [id])
   teamID      String
+  start       DateTime
+  end         DateTime
   description String
   picture     String
   public      Boolean

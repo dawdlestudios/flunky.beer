@@ -1,5 +1,10 @@
+import { z } from "zod";
+
 export type USER_ROLES = "ADMIN" | "MODERATOR" | "REFEREE" | "USER";
 export type TEAM_ROLES = "CAPITAIN" | "MEMBER";
+
+export const PREFERENCE = z.enum(["FLUNKY_BALL", "BIER_BALL"]);
+export type PREFERENCE = z.infer<typeof PREFERENCE>;
 
 // public info: everyone can see this
 export type publicUserInfo = {
@@ -8,6 +13,7 @@ export type publicUserInfo = {
 	displayName: string;
 	bio: string;
 	profilePicture: string;
+	preference: string;
 	TeamMember: publicTeamMemberInfo[];
 };
 
@@ -31,6 +37,7 @@ export type followerUserInfo = {
 	bio: string;
 	contact: string;
 	profilePicture: string;
+	preference: string;
 	teams: publicTeamInfo[];
 };
 
@@ -44,22 +51,8 @@ export type privateUserInfo = {
 	contact: string;
 	profilePicture: string;
 	role: string;
+	preference: string;
 	teamMember: publicTeamMemberInfo[];
 	followers: followerUserInfo[];
 	follows: publicUserInfo[];
 };
-
-/*
-   id             String       @id @default(cuid())
-  username       String       @unique
-  email          String       @unique
-  displayName    String
-  password       String
-  bio            String
-  contact        String
-  profilePicture String
-  role           String
-  TeamMember     TeamMember[]
-  follows        User[]       @relation("UserFollows")
-  followers      User[]       @relation("UserFollows")
-  */

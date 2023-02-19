@@ -8,6 +8,7 @@ CREATE TABLE "User" (
     "bio" TEXT NOT NULL,
     "contact" TEXT NOT NULL,
     "profilePicture" TEXT NOT NULL,
+    "preference" TEXT NOT NULL,
     "role" TEXT NOT NULL
 );
 
@@ -33,6 +34,8 @@ CREATE TABLE "Team" (
 CREATE TABLE "Event" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "teamID" TEXT NOT NULL,
+    "start" DATETIME NOT NULL,
+    "end" DATETIME NOT NULL,
     "description" TEXT NOT NULL,
     "picture" TEXT NOT NULL,
     "public" BOOLEAN NOT NULL,

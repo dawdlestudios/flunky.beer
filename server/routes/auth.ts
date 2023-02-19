@@ -5,6 +5,7 @@ import type { User } from "../prisma";
 import argon2 from "argon2";
 import { createJWT } from "../utils/auth";
 import { TRPCError } from "@trpc/server";
+import { PREFERENCE } from "../types";
 
 export const authRouter = router({
 	signUp: publicProcedure
@@ -14,6 +15,7 @@ export const authRouter = router({
 				username: z.string().regex(/^[a-zA-Z0-9_-]{3,20}$/),
 				email: z.string().email(),
 				password: z.string().min(8),
+				preference: PREFERENCE,
 			}),
 		)
 		.mutation(async ({ input }) => {
@@ -29,6 +31,7 @@ export const authRouter = router({
 					contact: "",
 					profilePicture: "",
 					role: "USER",
+					preference: input.preference,
 				},
 			});
 

@@ -43,6 +43,7 @@ export const userRouter = router({
 				displayName: user.displayName,
 				bio: user.bio,
 				profilePicture: user.profilePicture,
+				preference: user.preference,
 				TeamMember: user.TeamMember.map((tm) => {
 					const teamInfo: publicTeamMemberInfo = {
 						id: tm.id,
@@ -72,6 +73,7 @@ export const userRouter = router({
 				contact: true,
 				profilePicture: true,
 				role: true,
+				preference: true,
 				TeamMember: {
 					select: {
 						id: true,
@@ -93,6 +95,7 @@ export const userRouter = router({
 						bio: true,
 						contact: true,
 						profilePicture: true,
+						preference: true,
 						TeamMember: {
 							select: {
 								id: true,
@@ -115,6 +118,7 @@ export const userRouter = router({
 						displayName: true,
 						bio: true,
 						profilePicture: true,
+						preference: true,
 						TeamMember: {
 							select: {
 								id: true,
