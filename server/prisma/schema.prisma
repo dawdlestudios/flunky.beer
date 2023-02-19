@@ -20,7 +20,7 @@ model User {
   contact        String
   profilePicture String
   preference     String
-  role           String
+  role           String // type USER_ROLES
   TeamMember     TeamMember[]
   follows        User[]       @relation("UserFollows")
   followers      User[]       @relation("UserFollows")
@@ -29,7 +29,7 @@ model User {
 model TeamMember {
   id       String @id @default(cuid())
   nickName String
-  role     String
+  role     String // type TEAM_ROLES
   user     User   @relation(fields: [userID], references: [id])
   userID   String
   team     Team   @relation(fields: [teamID], references: [id])
@@ -38,23 +38,35 @@ model TeamMember {
 
 model Team {
   id               String             @id @default(cuid())
+  slug             String             @unique
   name             String
   contact          String
-  Event            Event[]
   MatchParticipant MatchParticipant[]
   TeamMember       TeamMember[]
+  TeamEvent        TeamEvent[]
+}
+
+model TeamEvent {
+  id      String @id @default(cuid())
+  event   Event  @relation(fields: [eventID], references: [id])
+  eventID String
+  team    Team   @relation(fields: [teamID], references: [id])
+  teamID  String
+  role    String // type TEAM_EVENT_ROLES
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  organizer   Team     @relation(fields: [teamID], references: [id])
-  teamID      String
-  start       DateTime
-  end         DateTime
-  description String
-  picture     String
-  public      Boolean
-  Match       Match[]
+  id              String      @id @default(cuid())
+  slug            String      @unique
+  name            String
+  description     String
+  pictureHeadding String
+  start           DateTime
+  end             DateTime
+  picture         String
+  public          Boolean
+  TeamEvent       TeamEvent[]
+  Match           Match[]
 }
 
 model Match {
@@ -70,7 +82,7 @@ model MatchParticipant {
   matchID      String
   team         Team    @relation(fields: [teamID], references: [id])
   teamID       String
-  winer        String
+  winner       String
   acceped      Boolean
   isChallenger Boolean
 }

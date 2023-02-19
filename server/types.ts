@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export type USER_ROLES = "ADMIN" | "MODERATOR" | "REFEREE" | "USER";
 export type TEAM_ROLES = "CAPITAIN" | "MEMBER";
+export type TEAM_EVENT_ROLES = "ORGANIZER" | "ATTENDEE";
 
 export const PREFERENCE = z.enum(["FLUNKY_BALL", "BIER_BALL"]);
 export type PREFERENCE = z.infer<typeof PREFERENCE>;
